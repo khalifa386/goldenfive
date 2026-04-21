@@ -12,8 +12,8 @@
     * {margin:0;padding:0;box-sizing:border-box;}
 
     body {
-      font-family: 'Cairo', sans-serif;
-      min-height: 100vh;
+      font-family:'Cairo',sans-serif;
+      min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
@@ -110,13 +110,8 @@
       margin-bottom:12px;
     }
 
-    .whatsapp {
-      background:linear-gradient(135deg,#25d366,#128c7e);
-    }
-
-    .russian-btn {
-      background:linear-gradient(135deg,#0057b8,#003f8a);
-    }
+    .whatsapp {background:linear-gradient(135deg,#25d366,#128c7e);}
+    .russian-btn {background:linear-gradient(135deg,#0057b8,#003f8a);}
 
     .quick-links-grid {
       display:grid;
@@ -140,9 +135,7 @@
       min-height:90px;
     }
 
-    .mini-link i {
-      font-size:22px;
-    }
+    .mini-link i {font-size:22px;}
 
     .vk-link {background:linear-gradient(135deg,#4a76a8,#2f5f98);}
     .telegram-link {background:linear-gradient(135deg,#229ED9,#0f7ab8);}
@@ -151,7 +144,6 @@
     .tiktok-link {background:linear-gradient(135deg,#000,#ff0050);}
     .viber-link {background:linear-gradient(135deg,#7360f2,#5b42d6);}
 
-    /* 🔥 Max Logo Fix */
     .max-logo {
       width:28px;
       height:28px;
@@ -159,12 +151,11 @@
       object-fit:cover;
     }
 
-    /* 🔥 POPUP */
+    /* popup */
     .popup {
       position:fixed;
       top:0;left:0;
-      width:100%;
-      height:100%;
+      width:100%;height:100%;
       background:rgba(0,0,0,0.6);
       display:none;
       justify-content:center;
@@ -230,45 +221,45 @@
     </div>
   </div>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/79003240714" class="main-btn whatsapp" target="_blank">
+  <!-- WhatsApp (Original Style) -->
+  <a href="https://wa.me/79003240714" class="main-btn whatsapp" onclick="openSmart(event,'https://wa.me/79003240714')">
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <!-- Max 🔥 -->
+  <!-- Max -->
   <a href="#" class="main-btn russian-btn">
-    <img src="max.png" class="max-logo" alt="Max">
+    <img src="max.png" class="max-logo">
     <span>Max</span>
   </a>
 
   <div class="quick-links-grid">
 
-    <a href="#" onclick="openSmart(event,'https://goldenfive.ru')" class="mini-link website-link">
+    <a href="https://goldenfive.ru" onclick="openSmart(event,this.href)" class="mini-link website-link">
       <i class="fa-solid fa-globe"></i>
       <span>Website</span>
     </a>
 
-    <a href="#" onclick="openSmart(event,'https://t.me/excursionsgoldenfive')" class="mini-link telegram-link">
+    <a href="https://t.me/excursionsgoldenfive" onclick="openSmart(event,this.href)" class="mini-link telegram-link">
       <i class="fa-brands fa-telegram"></i>
       <span>Telegram</span>
     </a>
 
-    <a href="#" onclick="openSmart(event,'https://www.facebook.com/share/1HbUaWGj7Y/')" class="mini-link facebook-link">
+    <a href="https://www.facebook.com/share/1HbUaWGj7Y/" onclick="openSmart(event,this.href)" class="mini-link facebook-link">
       <i class="fa-brands fa-facebook-f"></i>
       <span>Facebook</span>
     </a>
 
-    <a href="#" onclick="openSmart(event,'https://www.tiktok.com/@mandomando1575')" class="mini-link tiktok-link">
+    <a href="https://www.tiktok.com/@mandomando1575" onclick="openSmart(event,this.href)" class="mini-link tiktok-link">
       <i class="fa-brands fa-tiktok"></i>
       <span>TikTok</span>
     </a>
 
-    <a href="#" onclick="openSmart(event,'https://vk.com/goldenfiveru')" class="mini-link vk-link">
+    <a href="https://vk.com/goldenfiveru" onclick="openSmart(event,this.href)" class="mini-link vk-link">
       <i class="fa-brands fa-vk"></i>
       <span>VK</span>
     </a>
 
-    <a href="#" class="mini-link viber-link">
+    <a href="#" onclick="openViber(event)" class="mini-link viber-link">
       <i class="fa-brands fa-viber"></i>
       <span>Viber</span>
     </a>
@@ -277,49 +268,66 @@
 
 </div>
 
-<!-- 🔥 POPUP -->
-<div id="browserPopup" class="popup">
+<!-- popup -->
+<div id="popup" class="popup">
   <div class="popup-box">
     <h2>⚠️ Open in Chrome</h2>
-    <p>افتح الموقع في Chrome للحصول على أفضل تجربة</p>
+    <p>For best experience</p>
 
     <div class="popup-actions">
-      <button class="btn-chrome" onclick="openChromeDirect()">Open Chrome</button>
-      <button class="btn-close" onclick="closePopup()">Continue here</button>
+      <button class="btn-chrome" onclick="openChrome()">Open Chrome</button>
+      <button class="btn-close" onclick="closePopup()">Stay here</button>
     </div>
   </div>
 </div>
 
 <script>
 
-/* detect in-app browser */
-function detectInAppBrowser() {
+/* detect */
+function isInApp(){
   const ua = navigator.userAgent || "";
-  return ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram") || ua.includes("TikTok");
+  return ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram");
 }
 
-window.addEventListener("load", () => {
-  if (detectInAppBrowser()) {
-    document.getElementById("browserPopup").style.display = "flex";
+window.onload = ()=>{
+  if(isInApp()){
+    document.getElementById("popup").style.display="flex";
   }
-});
+};
 
-function closePopup() {
-  document.getElementById("browserPopup").style.display = "none";
+function closePopup(){
+  document.getElementById("popup").style.display="none";
 }
 
-function openChromeDirect() {
-  const url = window.location.href;
-  const clean = url.replace(/^https?:\/\//, "");
-  const intent = `intent://${clean}#Intent;scheme=https;package=com.android.chrome;end`;
-
-  window.location.href = intent;
+function openChrome(){
+  const url = location.href.replace(/^https?:\/\//,"");
+  location.href = `intent://${url}#Intent;scheme=https;package=com.android.chrome;end`;
 }
 
-/* links */
-function openSmart(event, url) {
-  event.preventDefault();
-  window.open(url, "_blank");
+/* SMART CORE (same logic for all links) */
+function openSmart(e,url){
+  e.preventDefault();
+
+  window.location.href = url;
+
+  setTimeout(()=>{
+    window.open(url,"_blank");
+  },1000);
+}
+
+/* Viber */
+function openViber(e){
+  e.preventDefault();
+
+  const phone = "79003240714";
+  const app = `viber://chat?number=%2B${phone}`;
+  const web = "https://viber.com";
+
+  window.location.href = app;
+
+  setTimeout(()=>{
+    window.open(web,"_blank");
+  },1200);
 }
 
 </script>
