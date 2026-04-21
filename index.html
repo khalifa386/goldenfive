@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoldenFive</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background:
+        linear-gradient(rgba(15,8,35,0.78), rgba(15,8,35,0.82)),
+        url('background.png') center/cover no-repeat fixed;
+    }
+
+    .modern-card {
+      width: 100%;
+      max-width: 430px;
+      padding: 30px 26px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    }
+
+    .top-bar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:24px;
+    }
+
+    .status {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background: rgba(255,255,255,0.08);
+      padding:8px 14px;
+      border-radius:999px;
+      color:#dfffe7;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .dot {
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#35ff78;
+      box-shadow:0 0 10px #35ff78;
+    }
+
+    .lang-btn {
+      border:none;
+      padding:10px 14px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#7b2ff7,#f107a3);
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .company-section {
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:24px;
+    }
+
+    .profile-img {
+      width:90px;
+      height:90px;
+      border-radius:24px;
+      object-fit:cover;
+    }
+
+    .company-info h1 {
+      color:white;
+      font-size:1.6rem;
+      margin-bottom:6px;
+    }
+
+    .company-info p {
+      color:rgba(255,255,255,0.75);
+      font-size:14px;
+    }
+
+    .main-btn {
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      padding:18px;
+      border-radius:22px;
+      text-decoration:none;
+      color:white;
+      font-weight:800;
+      background:linear-gradient(135deg,#25d366,#128c7e);
+      margin-bottom:18px;
+    }
+
+    .russian-btn {
+      background: linear-gradient(135deg,#0057b8,#003f8a);
+    }
+
+    .max-logo {
+      width:28px;
+      height:28px;
+      border-radius:8px;
+      object-fit:cover;
+    }
+
+    .quick-links-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .mini-link {
+      text-decoration:none;
+      color:white;
+      border-radius:18px;
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:600;
+      min-height:90px;
+    }
+
+    .vk-link {background:linear-gradient(135deg,#4a76a8,#2f5f98);}
+    .telegram-link {background:linear-gradient(135deg,#229ED9,#0f7ab8);}
+    .website-link {background:linear-gradient(135deg,#ff4b4b,#d62828);}
+    .facebook-link {background:linear-gradient(135deg,#1877f2,#0d5bd3);}
+    .tiktok-link {background:linear-gradient(135deg,#000,#ff0050);}
+    .viber-link {background:linear-gradient(135deg,#7360f2,#5b42d6);}
+
+    .footer {
+      margin-top:28px;
+      text-align:center;
+      color:rgba(255,255,255,0.6);
+      font-size:12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="modern-card">
+
+  <div class="top-bar">
+    <div class="status" id="statusText">
+      <span class="dot"></span> Available now
+    </div>
+
+    <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">
+      Русский
+    </button>
+  </div>
+
+  <div class="company-section">
+    <img src="LOGO.JPG" class="profile-img">
+    <div class="company-info">
+      <h1>GoldenFive</h1>
+      <p>Discover the magic of Ancient Egypt</p>
+    </div>
+  </div>
+
+  <a href="https://wa.me/79003240714" class="main-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+
+  <a href="#" class="main-btn russian-btn" onclick="openMax(event)">
+    <img src="max.png" class="max-logo" alt="Max">
+    <span>Max</span>
+  </a>
+
+  <div class="quick-links-grid">
+
+    <a href="#" onclick="openInYandex(event, 'https://goldenfive.ru')" class="mini-link website-link">
+      <i class="fa-solid fa-globe"></i>
+      <span>Website</span>
+    </a>
+
+    <a href="#" onclick="openInYandex(event, 'https://t.me/excursionsgoldenfive')" class="mini-link telegram-link">
+      <i class="fa-brands fa-telegram"></i>
+      <span>Telegram</span>
+    </a>
+
+    <a href="#" onclick="openInYandex(event, 'https://www.facebook.com/share/1HbUaWGj7Y/')" class="mini-link facebook-link">
+      <i class="fa-brands fa-facebook-f"></i>
+      <span>Facebook</span>
+    </a>
+
+    <a href="#" onclick="openInYandex(event, 'https://www.tiktok.com/@mandomando1575')" class="mini-link tiktok-link">
+      <i class="fa-brands fa-tiktok"></i>
+      <span>TikTok</span>
+    </a>
+
+    <a href="#" onclick="openInYandex(event, 'https://vk.com/goldenfiveru')" class="mini-link vk-link">
+      <i class="fa-brands fa-vk"></i>
+      <span>VK</span>
+    </a>
+
+    <a href="#" class="mini-link viber-link" onclick="openViber(event)">
+      <i class="fa-brands fa-viber"></i>
+      <span>Viber</span>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <a href="#" onclick="openInYandex(event, 'https://link.gettap.co/mnswrkhlyfh8103175')" style="color:rgba(255,255,255,0.75);text-decoration:none;font-weight:700;">
+      Designed by Mansour Khalifa
+    </a>
+  </div>
+
+</div>
+
+<script>
+function detectLanguage() {
+  const mobileLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+
+  if (mobileLang.startsWith('ar')) return 'ar';
+  if (mobileLang.startsWith('ru')) return 'ru';
+
+  return 'en';
+}
+
+let currentLang = detectLanguage();
+
+const translations = {
+  en: {
+    status: 'Available now',
+    desc: 'Discover the magic of Ancient Egypt',
+    website: 'Website',
+    telegram: 'Telegram',
+    vk: 'VK',
+    facebook: 'Facebook',
+    tiktok: 'TikTok',
+    viber: 'Viber',
+    button: 'Русский',
+    dir: 'ltr'
+  },
+  ru: {
+    status: 'Сейчас доступно',
+    desc: 'Откройте магию Древнего Египта',
+    website: 'Сайт',
+    telegram: 'Телеграм',
+    vk: 'ВКонтакте',
+    facebook: 'Фейсбук',
+    tiktok: 'ТикТок',
+    viber: 'Viber',
+    button: 'العربية',
+    dir: 'ltr'
+  },
+  ar: {
+    status: 'متاح الآن',
+    desc: 'اكتشف سحر مصر القديمة',
+    website: 'الموقع',
+    telegram: 'تليجرام',
+    vk: 'VK',
+    facebook: 'فيسبوك',
+    tiktok: 'تيك توك',
+    viber: 'فايبر',
+    button: 'English',
+    dir: 'rtl'
+  }
+};
+
+function applyLanguage() {
+  const t = translations[currentLang];
+
+  document.documentElement.dir = t.dir;
+  document.documentElement.lang = currentLang;
+
+  document.getElementById('statusText').innerHTML = `<span class="dot"></span> ${t.status}`;
+  document.querySelector('.company-info p').textContent = t.desc;
+
+  document.querySelector('.website-link span').textContent = t.website;
+  document.querySelector('.telegram-link span').textContent = t.telegram;
+  document.querySelector('.vk-link span').textContent = t.vk;
+  document.querySelector('.facebook-link span').textContent = t.facebook;
+  document.querySelector('.tiktok-link span').textContent = t.tiktok;
+  document.querySelector('.viber-link span').textContent = t.viber;
+
+  document.getElementById('langBtn').textContent = t.button;
+}
+
+window.addEventListener('DOMContentLoaded', applyLanguage);
+
+function toggleLanguage() {
+  if (currentLang === 'en') currentLang = 'ru';
+  else if (currentLang === 'ru') currentLang = 'ar';
+  else currentLang = 'en';
+
+  applyLanguage();
+}
+
+function openInYandex(event, url) {
+  event.preventDefault();
+
+  const cleanUrl = url.replace(/^https?:\/\//, '');
+  const yandexIntent = `intent://${cleanUrl}#Intent;scheme=https;package=com.yandex.browser;end`;
+
+  window.location.href = yandexIntent;
+
+  setTimeout(() => {
+    window.open(url, '_blank');
+  }, 1200);
+}
+
+function openMax(event) {
+  event.preventDefault();
+
+  const appLink = 'max://chat?phone=%2B79003240714';
+  const webLink = 'https://max.ru';
+
+  window.location.href = appLink;
+
+  setTimeout(() => {
+    openInYandex({ preventDefault: () => {} }, webLink);
+  }, 1000);
+}
+
+function openViber(event) {
+  event.preventDefault();
+
+  const appLink = 'viber://chat?number=%2B79003240714';
+  const webLink = 'https://invite.viber.com/?number=%2B79003240714';
+
+  window.location.href = appLink;
+
+  setTimeout(() => {
+    openInYandex({ preventDefault: () => {} }, webLink);
+  }, 1000);
+}
+</script>
+
+</body>
+</html>
+
