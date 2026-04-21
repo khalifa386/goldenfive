@@ -1,295 +1,339 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoldenFive</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldenFive</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body {
-      font-family:'Cairo',sans-serif;
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:20px;
-      background:
-        linear-gradient(rgba(15,8,35,0.78), rgba(15,8,35,0.82)),
-        url('background.png') center/cover no-repeat fixed;
-    }
+body{
+  font-family:'Cairo',sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:
+  linear-gradient(rgba(15,8,35,0.78), rgba(15,8,35,0.82)),
+  url('background.png') center/cover no-repeat fixed;
+}
 
-    .modern-card {
-      width:100%;
-      max-width:430px;
-      padding:30px 26px;
-      border-radius:32px;
-      background:rgba(255,255,255,0.1);
-      backdrop-filter:blur(24px);
-      border:1px solid rgba(255,255,255,0.12);
-      box-shadow:0 30px 60px rgba(0,0,0,0.35);
-    }
+.modern-card{
+  width:100%;
+  max-width:430px;
+  padding:30px 26px;
+  border-radius:32px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 30px 60px rgba(0,0,0,0.35);
+}
 
-    .top-bar {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:24px;
-    }
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+}
 
-    .status {
-      display:flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(255,255,255,0.08);
-      padding:8px 14px;
-      border-radius:999px;
-      color:#dfffe7;
-      font-size:13px;
-      font-weight:700;
-    }
+.status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.08);
+  padding:8px 14px;
+  border-radius:999px;
+  color:#dfffe7;
+  font-size:13px;
+  font-weight:700;
+}
 
-    .dot {
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:#35ff78;
-      box-shadow:0 0 10px #35ff78;
-    }
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#35ff78;
+  box-shadow:0 0 10px #35ff78;
+}
 
-    .lang-btn {
-      border:none;
-      padding:10px 14px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#7b2ff7,#f107a3);
-      color:white;
-      font-weight:700;
-      cursor:pointer;
-    }
+.lang-btn{
+  border:none;
+  padding:10px 14px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#7b2ff7,#f107a3);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
 
-    .company-section {
-      display:flex;
-      align-items:center;
-      gap:16px;
-      margin-bottom:24px;
-    }
+.company-section{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:24px;
+}
 
-    .profile-img {
-      width:90px;
-      height:90px;
-      border-radius:24px;
-      object-fit:cover;
-    }
+.profile-img{
+  width:90px;
+  height:90px;
+  border-radius:24px;
+  object-fit:cover;
+}
 
-    .company-info h1 {
-      color:white;
-      font-size:1.6rem;
-      margin-bottom:6px;
-    }
+.company-info h1{
+  color:white;
+  font-size:1.6rem;
+}
 
-    .company-info p {
-      color:rgba(255,255,255,0.75);
-      font-size:14px;
-    }
+.company-info p{
+  color:rgba(255,255,255,0.75);
+  font-size:14px;
+}
 
-    .main-btn {
-      width:100%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      padding:18px;
-      border-radius:22px;
-      text-decoration:none;
-      color:white;
-      font-weight:800;
-      margin-bottom:12px;
-    }
+.main-btn{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  padding:18px;
+  border-radius:22px;
+  text-decoration:none;
+  color:white;
+  font-weight:800;
+  margin-bottom:12px;
+}
 
-    .whatsapp {background:linear-gradient(135deg,#25d366,#128c7e);}
-    .russian-btn {background:linear-gradient(135deg,#0057b8,#003f8a);}
+.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);}
+.russian-btn{background:linear-gradient(135deg,#0057b8,#003f8a);}
 
-    .quick-links-grid {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-      margin-top:10px;
-    }
+.quick-links-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:10px;
+}
 
-    .mini-link {
-      text-decoration:none;
-      color:white;
-      border-radius:18px;
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      font-size:13px;
-      font-weight:600;
-      min-height:90px;
-    }
+.mini-link{
+  text-decoration:none;
+  color:white;
+  border-radius:18px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:13px;
+  font-weight:600;
+  min-height:90px;
+}
 
-    .mini-link i {font-size:22px;}
+.mini-link i{font-size:22px;}
 
-    .vk-link {background:linear-gradient(135deg,#4a76a8,#2f5f98);}
-    .telegram-link {background:linear-gradient(135deg,#229ED9,#0f7ab8);}
-    .website-link {background:linear-gradient(135deg,#ff4b4b,#d62828);}
-    .facebook-link {background:linear-gradient(135deg,#1877f2,#0d5bd3);}
-    .tiktok-link {background:linear-gradient(135deg,#000,#ff0050);}
-    .viber-link {background:linear-gradient(135deg,#7360f2,#5b42d6);}
+.vk-link{background:linear-gradient(135deg,#4a76a8,#2f5f98);}
+.telegram-link{background:linear-gradient(135deg,#229ED9,#0f7ab8);}
+.website-link{background:linear-gradient(135deg,#ff4b4b,#d62828);}
+.facebook-link{background:linear-gradient(135deg,#1877f2,#0d5bd3);}
+.tiktok-link{background:linear-gradient(135deg,#000,#ff0050);}
+.viber-link{background:linear-gradient(135deg,#7360f2,#5b42d6);}
 
-    .max-logo {
-      width:28px;
-      height:28px;
-      border-radius:8px;
-      object-fit:cover;
-    }
+.max-logo{
+  width:28px;
+  height:28px;
+  border-radius:8px;
+}
 
-    /* popup */
-    .popup {
-      position:fixed;
-      top:0;left:0;
-      width:100%;height:100%;
-      background:rgba(0,0,0,0.6);
-      display:none;
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
-    }
+/* popup */
+.popup{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
 
-    .popup-box {
-      width:90%;
-      max-width:320px;
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(20px);
-      border-radius:20px;
-      padding:20px;
-      text-align:center;
-      color:white;
-      border:1px solid rgba(255,255,255,0.2);
-    }
+.popup-box{
+  width:90%;
+  max-width:320px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  color:white;
+}
 
-    .popup-actions {
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top:15px;
-    }
+.btn-chrome{
+  background:linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335);
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .btn-chrome {
-      background:linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335);
-      border:none;
-      padding:12px;
-      border-radius:12px;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-
-    .btn-close {
-      background:rgba(255,255,255,0.2);
-      border:none;
-      padding:10px;
-      border-radius:12px;
-      color:white;
-      cursor:pointer;
-    }
-
-  </style>
+.btn-close{
+  background:rgba(255,255,255,0.2);
+  border:none;
+  padding:10px;
+  border-radius:12px;
+  color:white;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
 <div class="modern-card">
 
-  <div class="top-bar">
-    <div class="status"><span class="dot"></span> Available now</div>
-    <button class="lang-btn">Русский</button>
+<div class="top-bar">
+  <div class="status"><span class="dot"></span> <span id="statusText">Available now</span></div>
+  <button class="lang-btn" onclick="toggleLang()">Русский</button>
+</div>
+
+<div class="company-section">
+  <img src="LOGO.JPG" class="profile-img">
+  <div class="company-info">
+    <h1 id="title">GoldenFive</h1>
+    <p id="desc">Discover the magic of Ancient Egypt</p>
   </div>
+</div>
 
-  <div class="company-section">
-    <img src="LOGO.JPG" class="profile-img">
-    <div class="company-info">
-      <h1>GoldenFive</h1>
-      <p>Discover the magic of Ancient Egypt</p>
-    </div>
-  </div>
+<a href="https://wa.me/79003240714" class="main-btn whatsapp" onclick="openSmart(event,this.href)">
+<i class="fab fa-whatsapp"></i> <span id="waText">WhatsApp</span>
+</a>
 
-  <!-- WhatsApp (Original Style) -->
-  <a href="https://wa.me/79003240714" class="main-btn whatsapp" onclick="openSmart(event,'https://wa.me/79003240714')">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
+<a href="#" onclick="openMax(event)" class="main-btn russian-btn">
+<img src="max.png" class="max-logo">
+<span id="maxText">Max</span>
+</a>
 
-  <!-- Max -->
-  <a href="#" class="main-btn russian-btn">
-    <img src="max.png" class="max-logo">
-    <span>Max</span>
-  </a>
+<div class="quick-links-grid">
 
-  <div class="quick-links-grid">
+<a href="https://goldenfive.ru" onclick="openSmart(event,this.href)" class="mini-link website-link">
+<i class="fa-solid fa-globe"></i>
+<span id="siteText">Website</span>
+</a>
 
-    <a href="https://goldenfive.ru" onclick="openSmart(event,this.href)" class="mini-link website-link">
-      <i class="fa-solid fa-globe"></i>
-      <span>Website</span>
-    </a>
+<a href="https://t.me/excursionsgoldenfive" onclick="openSmart(event,this.href)" class="mini-link telegram-link">
+<i class="fa-brands fa-telegram"></i>
+<span id="tgText">Telegram</span>
+</a>
 
-    <a href="https://t.me/excursionsgoldenfive" onclick="openSmart(event,this.href)" class="mini-link telegram-link">
-      <i class="fa-brands fa-telegram"></i>
-      <span>Telegram</span>
-    </a>
+<a href="https://www.facebook.com/share/1HbUaWGj7Y/" onclick="openSmart(event,this.href)" class="mini-link facebook-link">
+<i class="fa-brands fa-facebook-f"></i>
+<span id="fbText">Facebook</span>
+</a>
 
-    <a href="https://www.facebook.com/share/1HbUaWGj7Y/" onclick="openSmart(event,this.href)" class="mini-link facebook-link">
-      <i class="fa-brands fa-facebook-f"></i>
-      <span>Facebook</span>
-    </a>
+<a href="https://www.tiktok.com/@mandomando1575" onclick="openSmart(event,this.href)" class="mini-link tiktok-link">
+<i class="fa-brands fa-tiktok"></i>
+<span id="ttText">TikTok</span>
+</a>
 
-    <a href="https://www.tiktok.com/@mandomando1575" onclick="openSmart(event,this.href)" class="mini-link tiktok-link">
-      <i class="fa-brands fa-tiktok"></i>
-      <span>TikTok</span>
-    </a>
+<a href="https://vk.com/goldenfiveru" onclick="openSmart(event,this.href)" class="mini-link vk-link">
+<i class="fa-brands fa-vk"></i>
+<span id="vkText">VK</span>
+</a>
 
-    <a href="https://vk.com/goldenfiveru" onclick="openSmart(event,this.href)" class="mini-link vk-link">
-      <i class="fa-brands fa-vk"></i>
-      <span>VK</span>
-    </a>
-
-    <a href="#" onclick="openViber(event)" class="mini-link viber-link">
-      <i class="fa-brands fa-viber"></i>
-      <span>Viber</span>
-    </a>
-
-  </div>
+<a href="#" onclick="openViber(event)" class="mini-link viber-link">
+<i class="fa-brands fa-viber"></i>
+<span id="vbText">Viber</span>
+</a>
 
 </div>
 
-<!-- popup -->
+</div>
+
 <div id="popup" class="popup">
   <div class="popup-box">
     <h2>⚠️ Open in Chrome</h2>
-    <p>For best experience</p>
-
-    <div class="popup-actions">
+    <div style="margin-top:15px;">
       <button class="btn-chrome" onclick="openChrome()">Open Chrome</button>
-      <button class="btn-close" onclick="closePopup()">Stay here</button>
+      <button class="btn-close" onclick="closePopup()">Stay</button>
     </div>
   </div>
 </div>
 
 <script>
 
-/* detect */
-function isInApp(){
-  const ua = navigator.userAgent || "";
-  return ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram");
+/* Language */
+let isRu = false;
+
+function toggleLang(){
+  isRu = !isRu;
+
+  if(isRu){
+    statusText.innerText="Доступен الآن";
+    desc.innerText="Откройте магию Древнего Египта";
+    waText.innerText="Ватсап";
+    maxText.innerText="Макс";
+    siteText.innerText="Сайт";
+    tgText.innerText="Телеграм";
+    fbText.innerText="Фейсбук";
+    ttText.innerText="ТикТок";
+    vkText.innerText="ВКонтакте";
+    vbText.innerText="Вайбер";
+  }else{
+    statusText.innerText="Available now";
+    desc.innerText="Discover the magic of Ancient Egypt";
+    waText.innerText="WhatsApp";
+    maxText.innerText="Max";
+    siteText.innerText="Website";
+    tgText.innerText="Telegram";
+    fbText.innerText="Facebook";
+    ttText.innerText="TikTok";
+    vkText.innerText="VK";
+    vbText.innerText="Viber";
+  }
 }
 
-window.onload = ()=>{
+/* Smart links */
+function openSmart(e,url){
+  e.preventDefault();
+  window.location.href=url;
+  setTimeout(()=>window.open(url,"_blank"),800);
+}
+
+/* MAX */
+function openMax(e){
+  e.preventDefault();
+  const phone="79003240714";
+  const app=`max://chat?phone=${phone}`;
+  const web="https://max.ru";
+
+  window.location.href=app;
+  setTimeout(()=>window.open(web,"_blank"),1200);
+}
+
+/* Viber */
+function openViber(e){
+  e.preventDefault();
+  const phone="79003240714";
+  const app=`viber://chat?number=%2B${phone}`;
+  const web="https://viber.com";
+
+  window.location.href=app;
+  setTimeout(()=>window.open(web,"_blank"),1200);
+}
+
+/* detect */
+function isInApp(){
+  const ua=navigator.userAgent||"";
+  return ua.includes("FBAN")||ua.includes("FBAV")||ua.includes("Instagram");
+}
+
+window.onload=()=>{
   if(isInApp()){
     document.getElementById("popup").style.display="flex";
   }
@@ -300,34 +344,8 @@ function closePopup(){
 }
 
 function openChrome(){
-  const url = location.href.replace(/^https?:\/\//,"");
-  location.href = `intent://${url}#Intent;scheme=https;package=com.android.chrome;end`;
-}
-
-/* SMART CORE (same logic for all links) */
-function openSmart(e,url){
-  e.preventDefault();
-
-  window.location.href = url;
-
-  setTimeout(()=>{
-    window.open(url,"_blank");
-  },1000);
-}
-
-/* Viber */
-function openViber(e){
-  e.preventDefault();
-
-  const phone = "79003240714";
-  const app = `viber://chat?number=%2B${phone}`;
-  const web = "https://viber.com";
-
-  window.location.href = app;
-
-  setTimeout(()=>{
-    window.open(web,"_blank");
-  },1200);
+  const url=location.href.replace(/^https?:\/\//,"");
+  location.href=`intent://${url}#Intent;scheme=https;package=com.android.chrome;end`;
 }
 
 </script>
