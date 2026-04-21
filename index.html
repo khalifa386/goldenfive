@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -22,6 +21,12 @@
       background:
         linear-gradient(rgba(15,8,35,0.78), rgba(15,8,35,0.82)),
         url('background.png') center/cover no-repeat fixed;
+      animation: bgMove 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: center; }
+      100% { background-position: top; }
     }
 
     .modern-card {
@@ -29,10 +34,36 @@
       max-width: 430px;
       padding: 30px 26px;
       border-radius: 32px;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.25),
+        inset 0 0 40px rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+
+      animation: fadeUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .modern-card::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,0,150,0.25), transparent 60%);
+      animation: rotateGlow 8s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .top-bar {
@@ -40,6 +71,8 @@
       justify-content:space-between;
       align-items:center;
       margin-bottom:24px;
+      position: relative;
+      z-index: 2;
     }
 
     .status {
@@ -70,6 +103,11 @@
       color:white;
       font-weight:700;
       cursor:pointer;
+      transition: 0.3s;
+    }
+
+    .lang-btn:hover {
+      transform: scale(1.1) rotate(-3deg);
     }
 
     .company-section {
@@ -77,6 +115,8 @@
       align-items:center;
       gap:16px;
       margin-bottom:24px;
+      position: relative;
+      z-index: 2;
     }
 
     .profile-img {
@@ -84,6 +124,12 @@
       height:90px;
       border-radius:24px;
       object-fit:cover;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      transition: 0.4s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.1) rotate(2deg);
     }
 
     .company-info h1 {
@@ -95,6 +141,7 @@
     .company-info p {
       color:rgba(255,255,255,0.75);
       font-size:14px;
+      min-height: 20px;
     }
 
     .main-btn {
@@ -110,6 +157,14 @@
       font-weight:800;
       background:linear-gradient(135deg,#25d366,#128c7e);
       margin-bottom:18px;
+      transition: 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .main-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
     .russian-btn {
@@ -128,6 +183,8 @@
       grid-template-columns:repeat(2,1fr);
       gap:12px;
       margin-top:10px;
+      position: relative;
+      z-index: 2;
     }
 
     .mini-link {
@@ -143,6 +200,12 @@
       font-size:13px;
       font-weight:600;
       min-height:90px;
+      transition: 0.3s;
+    }
+
+    .mini-link:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
     }
 
     .vk-link {background:linear-gradient(135deg,#4a76a8,#2f5f98);}
@@ -157,9 +220,12 @@
       text-align:center;
       color:rgba(255,255,255,0.6);
       font-size:12px;
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
+
 <body>
 
 <div class="modern-card">
@@ -178,7 +244,7 @@
     <img src="LOGO.JPG" class="profile-img">
     <div class="company-info">
       <h1>GoldenFive</h1>
-      <p>Discover the magic of Ancient Egypt</p>
+      <p></p>
     </div>
   </div>
 
@@ -188,33 +254,33 @@
   </a>
 
   <a href="#" class="main-btn russian-btn" onclick="openMax(event)">
-    <img src="max.png" class="max-logo" alt="Max">
+    <img src="max.png" class="max-logo">
     <span>Max</span>
   </a>
 
   <div class="quick-links-grid">
 
-    <a href="#" onclick="openInYandex(event, 'https://goldenfive.ru')" class="mini-link website-link">
+    <a href="#" onclick="openSmart(event, 'https://goldenfive.ru')" class="mini-link website-link">
       <i class="fa-solid fa-globe"></i>
       <span>Website</span>
     </a>
 
-    <a href="#" onclick="openInYandex(event, 'https://t.me/excursionsgoldenfive')" class="mini-link telegram-link">
+    <a href="#" onclick="openSmart(event, 'https://t.me/excursionsgoldenfive')" class="mini-link telegram-link">
       <i class="fa-brands fa-telegram"></i>
       <span>Telegram</span>
     </a>
 
-    <a href="#" onclick="openInYandex(event, 'https://www.facebook.com/share/1HbUaWGj7Y/')" class="mini-link facebook-link">
+    <a href="#" onclick="openSmart(event, 'https://www.facebook.com/share/1HbUaWGj7Y/')" class="mini-link facebook-link">
       <i class="fa-brands fa-facebook-f"></i>
       <span>Facebook</span>
     </a>
 
-    <a href="#" onclick="openInYandex(event, 'https://www.tiktok.com/@mandomando1575')" class="mini-link tiktok-link">
+    <a href="#" onclick="openSmart(event, 'https://www.tiktok.com/@mandomando1575')" class="mini-link tiktok-link">
       <i class="fa-brands fa-tiktok"></i>
       <span>TikTok</span>
     </a>
 
-    <a href="#" onclick="openInYandex(event, 'https://vk.com/goldenfiveru')" class="mini-link vk-link">
+    <a href="#" onclick="openSmart(event, 'https://vk.com/goldenfiveru')" class="mini-link vk-link">
       <i class="fa-brands fa-vk"></i>
       <span>VK</span>
     </a>
@@ -227,7 +293,7 @@
   </div>
 
   <div class="footer">
-    <a href="#" onclick="openInYandex(event, 'https://link.gettap.co/mnswrkhlyfh8103175')" style="color:rgba(255,255,255,0.75);text-decoration:none;font-weight:700;">
+    <a href="#" onclick="openSmart(event, 'https://link.gettap.co/mnswrkhlyfh8103175')" style="color:rgba(255,255,255,0.75);text-decoration:none;font-weight:700;">
       Designed by Mansour Khalifa
     </a>
   </div>
@@ -235,12 +301,11 @@
 </div>
 
 <script>
+
 function detectLanguage() {
-  const mobileLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-
-  if (mobileLang.startsWith('ar')) return 'ar';
-  if (mobileLang.startsWith('ru')) return 'ru';
-
+  const lang = (navigator.language || 'en').toLowerCase();
+  if (lang.startsWith('ar')) return 'ar';
+  if (lang.startsWith('ru')) return 'ru';
   return 'en';
 }
 
@@ -285,6 +350,19 @@ const translations = {
   }
 };
 
+function typeEffect(element, text, speed = 40) {
+  element.textContent = '';
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
 function applyLanguage() {
   const t = translations[currentLang];
 
@@ -292,7 +370,7 @@ function applyLanguage() {
   document.documentElement.lang = currentLang;
 
   document.getElementById('statusText').innerHTML = `<span class="dot"></span> ${t.status}`;
-  document.querySelector('.company-info p').textContent = t.desc;
+  typeEffect(document.querySelector('.company-info p'), t.desc);
 
   document.querySelector('.website-link span').textContent = t.website;
   document.querySelector('.telegram-link span').textContent = t.telegram;
@@ -310,23 +388,37 @@ function toggleLanguage() {
   if (currentLang === 'en') currentLang = 'ru';
   else if (currentLang === 'ru') currentLang = 'ar';
   else currentLang = 'en';
-
   applyLanguage();
 }
 
-function openInYandex(event, url) {
+/* 🔥 Smart Open (Yandex + Chrome + fallback) */
+function openSmart(event, url) {
   event.preventDefault();
 
+  const isAndroid = /android/i.test(navigator.userAgent);
+
+  if (!isAndroid) {
+    window.open(url, '_blank');
+    return;
+  }
+
   const cleanUrl = url.replace(/^https?:\/\//, '');
+
   const yandexIntent = `intent://${cleanUrl}#Intent;scheme=https;package=com.yandex.browser;end`;
+  const chromeIntent = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end`;
 
   window.location.href = yandexIntent;
 
   setTimeout(() => {
+    window.location.href = chromeIntent;
+  }, 800);
+
+  setTimeout(() => {
     window.open(url, '_blank');
-  }, 1200);
+  }, 1600);
 }
 
+/* Max */
 function openMax(event) {
   event.preventDefault();
 
@@ -336,10 +428,11 @@ function openMax(event) {
   window.location.href = appLink;
 
   setTimeout(() => {
-    openInYandex({ preventDefault: () => {} }, webLink);
+    openSmart({ preventDefault: () => {} }, webLink);
   }, 1000);
 }
 
+/* Viber */
 function openViber(event) {
   event.preventDefault();
 
@@ -349,11 +442,11 @@ function openViber(event) {
   window.location.href = appLink;
 
   setTimeout(() => {
-    openInYandex({ preventDefault: () => {} }, webLink);
+    openSmart({ preventDefault: () => {} }, webLink);
   }, 1000);
 }
+
 </script>
 
 </body>
 </html>
-
